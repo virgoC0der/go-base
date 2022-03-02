@@ -3,7 +3,7 @@ module github.com/virgoC0der/go-base
 go 1.17
 
 require (
-	github.com/BurntSushi/toml v0.3.1
+	github.com/BurntSushi/toml v1.0.0
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-playground/validator/v10 v10.10.0
 	github.com/nicksnyder/go-i18n/v2 v2.1.0
