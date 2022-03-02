@@ -3,6 +3,6 @@ Private go library
 - [x] logging
 - [x] webbase
 - [ ] errors
-- [ ] validator
+- [x] validator
 - [ ] database
-- [ ] i18n
+- [x] i18n
