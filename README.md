@@ -6,3 +6,4 @@ Private go library
 - [x] validator
 - [ ] database
 - [x] i18n
+- [ ] middleware
