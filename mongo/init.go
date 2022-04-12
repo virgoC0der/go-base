@@ -21,7 +21,7 @@ type MongoDBConfig struct {
 }
 
 const (
-	kMongoUriTemplate = "mongodb://%s:%s@%s"
+	kMongoUriTemplate = "mongodb://%s:%s@%s/admin"
 	confPath          = "/home/go-base/conf/mongo.ini"
 )
 
@@ -46,9 +46,7 @@ func Init() error {
 		return err
 	}
 
-	Logger.Info("mongo config", zap.Any("opt", opt))
 	uri := fmt.Sprintf(kMongoUriTemplate, opt.username, opt.password, opt.host)
-	Logger.Info("mongo uri", zap.String("uri", uri))
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	client, err = mongo.Connect(ctx, options.Client().ApplyURI(uri).SetMaxPoolSize(opt.poolSize))
