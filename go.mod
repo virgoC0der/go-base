@@ -13,7 +13,7 @@ require (
 	golang.org/x/text v0.3.7
 	gopkg.in/ini.v1 v1.66.4
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
-	gorm.io/driver/mysql v1.3.2
+	gorm.io/driver/mysql v1.3.3
 	gorm.io/gorm v1.23.4
 )
 
