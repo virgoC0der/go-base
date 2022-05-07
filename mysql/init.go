@@ -24,9 +24,9 @@ type MysqlOption struct {
 }
 
 const (
-	confPath         = "/home/go-base/conf/mysql.ini"
-	mysqlUrlTemplate = "%s:%s@tcp(%s:%d)/%s"
-	mysqlSuffix      = "?charset=utf8&parseTime=true&loc=Asia%2FShanghai"
+	ConfPath         = "/home/go-base/conf/mysql.ini"
+	MysqlUrlTemplate = "%s:%s@tcp(%s:%d)/%s"
+	MysqlSuffix      = "?charset=utf8&parseTime=true&loc=Asia%2FShanghai"
 )
 
 var (
@@ -35,7 +35,7 @@ var (
 )
 
 func Init() error {
-	conf, err := ini.Load(confPath)
+	conf, err := ini.Load(ConfPath)
 	if err != nil {
 		Logger.Warn("load mysql config failed, err", zap.Error(err))
 		return err
@@ -49,8 +49,8 @@ func Init() error {
 
 	Timeout = time.Duration(opt.Timeout) * time.Second
 
-	url := fmt.Sprintf(mysqlUrlTemplate, opt.Username, opt.Password, opt.Addr, opt.Port, opt.DefaultDB)
-	globalDB, err = gorm.Open(mysql.Open(url+mysqlSuffix), &gorm.Config{})
+	url := fmt.Sprintf(MysqlUrlTemplate, opt.Username, opt.Password, opt.Addr, opt.Port, opt.DefaultDB)
+	globalDB, err = gorm.Open(mysql.Open(url+MysqlSuffix), &gorm.Config{})
 	if err != nil {
 		Logger.Warn("open mysql failed, err", zap.Error(err))
 		return err
@@ -67,6 +67,12 @@ func Init() error {
 	return nil
 }
 
-func GetDB(ctx context.Context) *gorm.DB {
+// GetDBWithContext returns gorm.DB instance with context
+func GetDBWithContext(ctx context.Context) *gorm.DB {
 	return globalDB.WithContext(ctx)
+}
+
+// GetDB returns gorm.DB instance
+func GetDB() *gorm.DB {
+	return globalDB
 }
