@@ -4,11 +4,9 @@ import (
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v2"
 	"github.com/jinzhu/gorm"
-	"go.uber.org/zap"
-	"gopkg.in/ini.v1"
-
 	. "github.com/virgoC0der/go-base/logging"
 	"github.com/virgoC0der/go-base/mysql"
+	"go.uber.org/zap"
 )
 
 var (
@@ -18,18 +16,7 @@ var (
 
 // NewAdapter returns a GormAdapter instance
 func NewAdapter(db *gorm.DB) error {
-	conf, err := ini.Load(mysql.ConfPath)
-	if err != nil {
-		Logger.Warn("load mysql config failed", zap.Error(err))
-		return err
-	}
-
-	opt := &mysql.MysqlOption{}
-	if err = conf.MapTo(opt); err != nil {
-		Logger.Warn("map mysql config to struct failed", zap.Error(err))
-		return err
-	}
-
+	var err error
 	adapter, err = gormadapter.NewAdapterByDB(db)
 	if err != nil {
 		Logger.Warn("new adapter failed", zap.Error(err))
@@ -41,6 +28,19 @@ func NewAdapter(db *gorm.DB) error {
 		Logger.Warn("new enforcer failed", zap.Error(err))
 		return err
 	}
+	_ = enforcer.LoadPolicy()
 
 	return nil
+}
+
+func Create(rule *mysql.CasbinRule) (bool, error) {
+	return enforcer.AddPolicy(rule.RoleId, rule.Api, rule.Method)
+}
+
+func List(roleId string) [][]string {
+	return enforcer.GetFilteredPolicy(0, roleId)
+}
+
+func Enforcer(sub, obj, act string) (bool, error) {
+	return enforcer.Enforce(sub, obj, act)
 }
