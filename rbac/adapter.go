@@ -1,12 +1,15 @@
 package rbac
 
 import (
+	"fmt"
+
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v2"
-	"github.com/jinzhu/gorm"
+	"go.uber.org/zap"
+	"gopkg.in/ini.v1"
+
 	. "github.com/virgoC0der/go-base/logging"
 	"github.com/virgoC0der/go-base/mysql"
-	"go.uber.org/zap"
 )
 
 var (
@@ -15,9 +18,22 @@ var (
 )
 
 // NewAdapter returns a GormAdapter instance
-func NewAdapter(db *gorm.DB) error {
-	var err error
-	adapter, err = gormadapter.NewAdapterByDB(db)
+func NewAdapter() error {
+	conf, err := ini.Load("./conf/mysql.ini")
+	if err != nil {
+		Logger.Warn("load mysql config failed", zap.Error(err))
+		return err
+	}
+
+	opt := &mysql.MysqlOption{}
+	if err = conf.MapTo(opt); err != nil {
+		Logger.Warn("map mysql config to struct failed", zap.Error(err))
+		return err
+	}
+
+	url := fmt.Sprintf(mysql.MysqlUrlTemplate, opt.Username, opt.Password, opt.Addr, opt.Port, opt.DefaultDB) + mysql.MysqlSuffix
+	Logger.Info("mysql url", zap.String("url", url))
+	adapter, err = gormadapter.NewAdapter("mysql", url, true)
 	if err != nil {
 		Logger.Warn("new adapter failed", zap.Error(err))
 		return err
