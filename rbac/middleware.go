@@ -3,6 +3,7 @@ package rbac
 import (
 	"github.com/gin-gonic/gin"
 	. "github.com/virgoC0der/go-base/logging"
+	"go.uber.org/zap"
 )
 
 func CasbinHandler() gin.HandlerFunc {
@@ -10,10 +11,12 @@ func CasbinHandler() gin.HandlerFunc {
 		obj := c.Request.URL.RequestURI()
 		act := c.Request.Method
 		// TODO: read role from session
-		sub := "admin"
-		success, err := Enforcer(sub, obj, act)
+		sub := "alice"
+		dom := "service"
+		success, err := Enforce(sub, dom, obj, act)
 		if err != nil {
-			Logger.Warn("enforce err")
+			Logger.Warn("enforce err", zap.Error(err))
+			c.Abort()
 			return
 		}
 

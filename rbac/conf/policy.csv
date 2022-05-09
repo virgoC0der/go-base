@@ -1,0 +1,14 @@
+p, hq, business_approve_POST, POST
+p, hq, business_approve_GET, GET
+p, hq, business_POST, POST
+p, normal_partner, business_POST, POST
+
+g, admin, partner_admin
+g, area, service_area
+g, hq, service_hq
+g, partner, normal_partner
+g2, /scl/v1/partner/business, business_POST
+g2, /scl/v1/partner/business/renewsms, business_POST
+g2, /scl/v1/partner/business/approve, business_approve_POST
+g2, /scl/v1/partner/business/approve/detail, business_approve_POST
+g2, /scl/v1/partner/business/approve/filter, business_approve_GET
