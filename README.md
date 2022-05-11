@@ -7,3 +7,4 @@ Private go library
 - [ ] database
 - [x] i18n
 - [ ] middleware
+- [x] rbac
