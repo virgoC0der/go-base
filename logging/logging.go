@@ -23,11 +23,10 @@ func InitLog() {
 	}
 
 	encodingConfig := zap.NewProductionEncoderConfig()
-	consoleEncoder := zapcore.NewConsoleEncoder(encodingConfig)
 	core := zapcore.NewCore(
-		consoleEncoder,
+		zapcore.NewJSONEncoder(encodingConfig),
 		zapcore.NewMultiWriteSyncer(zapcore.AddSync(os.Stdout), zapcore.AddSync(lumberJackLogger)),
-		zapcore.InfoLevel,
+		zapcore.DebugLevel,
 	)
 
 	zap.ReplaceGlobals(zap.New(core, zap.AddCaller()))
