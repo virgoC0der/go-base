@@ -1,0 +1,4 @@
+p,super_account,12345678,casbin_POST,POST,NULL,NULL
+g,super_account,admin,12345678,NULL,NULL,NULL
+g2,/api/v1/casbin,casbin_POST,NULL,NULL,NULL,NULL
+g2,/api/v1/casbin/approve,casbin_approve,NULL,NULL,NULL,NULL

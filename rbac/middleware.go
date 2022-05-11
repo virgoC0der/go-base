@@ -36,3 +36,34 @@ func CasbinHandler() gin.HandlerFunc {
 		c.AbortWithStatusJSON(200, &resp)
 	}
 }
+
+func DomainsHandler() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// partner_code作为域
+		dom := "12345678"
+		obj := c.Request.URL.Path
+		act := c.Request.Method
+		sub := "super_account"
+		success, err := Enforce(sub, dom, obj, act)
+		if err != nil {
+			c.Abort()
+			Logger.Warn("enforce err", zap.Error(err))
+			return
+		}
+
+		if success {
+			c.Next()
+			return
+		}
+
+		Logger.Warn("无权限访问")
+		resp := struct {
+			Code int    `json:"code"`
+			Msg  string `json:"msg"`
+		}{
+			1001,
+			"no access",
+		}
+		c.AbortWithStatusJSON(200, &resp)
+	}
+}

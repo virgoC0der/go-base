@@ -2,7 +2,6 @@ p, hq, business_approve_POST, POST
 p, hq, business_approve_GET, GET
 p, hq, business_POST, POST
 p, normal_partner, business_POST, POST
-
 g, admin, partner_admin
 g, area, service_area
 g, hq, service_hq
