@@ -8,7 +8,7 @@ require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-playground/validator/v10 v10.11.0
 	github.com/nicksnyder/go-i18n/v2 v2.1.0
-	go.mongodb.org/mongo-driver v1.10.1
+	go.mongodb.org/mongo-driver v1.10.4
 	go.uber.org/zap v1.22.0
 	golang.org/x/text v0.3.7
 	gopkg.in/ini.v1 v1.67.0
