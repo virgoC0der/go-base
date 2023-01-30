@@ -12,6 +12,10 @@ var (
 	Logger *zap.Logger
 )
 
+func init() {
+	InitLog()
+}
+
 func InitLog() {
 	// 日志切割
 	lumberJackLogger := &lumberjack.Logger{
