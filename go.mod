@@ -4,13 +4,13 @@ go 1.17
 
 require (
 	github.com/BurntSushi/toml v1.2.1
-	github.com/gin-contrib/zap v0.0.2
 	github.com/gin-contrib/zap v0.1.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-playground/validator/v10 v10.11.0
 	github.com/nicksnyder/go-i18n/v2 v2.2.1
 	go.mongodb.org/mongo-driver v1.10.1
-	go.uber.org/zap v1.23.0
+	go.uber.org/zap v1.24.0
+	golang.org/x/text v0.3.7
 	golang.org/x/text v0.4.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
