@@ -8,7 +8,7 @@ require (
 	github.com/gin-gonic/gin v1.8.2
 	github.com/go-playground/validator/v10 v10.11.1
 	github.com/nicksnyder/go-i18n/v2 v2.2.1
-	go.mongodb.org/mongo-driver v1.10.1
+	go.mongodb.org/mongo-driver v1.11.2
 	go.uber.org/zap v1.24.0
 	golang.org/x/text v0.5.0
 	gopkg.in/ini.v1 v1.67.0
@@ -22,7 +22,7 @@ require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
-	github.com/goccy/go-json v0.9.7 // indirect
+	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
