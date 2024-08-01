@@ -3,14 +3,14 @@ module github.com/virgoC0der/go-base
 go 1.17
 
 require (
-	github.com/BurntSushi/toml v1.3.0
+	github.com/BurntSushi/toml v1.3.2
 	github.com/gin-contrib/zap v0.1.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-playground/validator/v10 v10.14.0
-	github.com/nicksnyder/go-i18n/v2 v2.2.1
+	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	go.mongodb.org/mongo-driver v1.11.2
 	go.uber.org/zap v1.24.0
-	golang.org/x/text v0.9.0
+	golang.org/x/text v0.14.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gorm.io/driver/mysql v1.5.1
