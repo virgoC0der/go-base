@@ -10,11 +10,11 @@ require (
 	github.com/nicksnyder/go-i18n/v2 v2.2.1
 	go.mongodb.org/mongo-driver v1.11.2
 	go.uber.org/zap v1.24.0
-	golang.org/x/text v0.9.0
+	golang.org/x/text v0.14.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gorm.io/driver/mysql v1.5.1
-	gorm.io/gorm v1.25.1
+	gorm.io/gorm v1.25.11
 )
 
 require (
