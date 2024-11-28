@@ -13,8 +13,8 @@ import (
 	. "github.com/virgoC0der/go-base/logging"
 )
 
-func Init() error {
-	conf, err := ini.Load("/Users/chensx/Desktop/Go/go-base/rbac/conf/mysql.ini")
+func Init(path string) error {
+	conf, err := ini.Load(path)
 	if err != nil {
 		Logger.Warn("load mysql config failed", zap.Error(err))
 		return err

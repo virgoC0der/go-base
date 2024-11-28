@@ -3,11 +3,12 @@ package rbac
 import (
 	"context"
 	"fmt"
+	"time"
+
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v2"
 	"go.uber.org/zap"
 	"gopkg.in/ini.v1"
-	"time"
 
 	. "github.com/virgoC0der/go-base/logging"
 	"github.com/virgoC0der/go-base/mysql"
@@ -19,8 +20,8 @@ var (
 )
 
 // NewAdapter returns a GormAdapter instance
-func NewAdapter() error {
-	conf, err := ini.Load("/Users/chensx/Desktop/Go/go-base/rbac/conf/mysql.ini")
+func NewAdapter(path string) error {
+	conf, err := ini.Load(path)
 	if err != nil {
 		Logger.Warn("load mysql config failed", zap.Error(err))
 		return err
