@@ -25,7 +25,7 @@ func Load(path string) {
 
 // Tr translates a message
 func Tr(i18nKey string, template map[string]interface{}) string {
-	if len(template) == 0 {
+	if len(template) == 0 || template == nil {
 		return localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: i18nKey})
 	}
 	return localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: i18nKey, TemplateData: template})
